@@ -36,6 +36,11 @@ body {
 
 .nav__menu {
     list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
 
 .nav__item {
@@ -72,11 +77,13 @@ body {
 .main__layout {
     width: 100%;
     min-height: calc(100vh - 80px);
+    height: calc(100vh - 80px);
     padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .input__video {
@@ -90,4 +97,17 @@ body {
     width: 100%;
     height: calc(100% - 80px);
     border: 2px solid black;
+}
+
+.pointer {
+    position: absolute;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.767);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
 }
