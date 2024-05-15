@@ -9,6 +9,13 @@ const options = {
 }
 
 
+//Calculate
+const calculateDistance = (x1, y1, x2, y2) => {
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    return Math.sqrt(dx + dx + dy * dy);
+};
+
 //Draw face mesh
 const onResultsFaceMesh = (results) => {
     canvasContext.save();
@@ -16,6 +23,15 @@ const onResultsFaceMesh = (results) => {
     canvasContext.drawImage(results.image, 0, 0, inputCanvas.width, inputCanvas.height);
 
     if (results.multiFaceLandmarks) {
+        let eyePos1, eyePos2;
+
+        if (results.multiFaceLandmarks[0][17]) {
+            eyePos1 = results.multiFaceLandmarks[0][0];
+            eyePos2 = results.multiFaceLandmarks[0][17];
+            const distance = calculateDistance(eyePos2.x, eyePos2.y, eyePos1.x, eyePos1.y);
+            console.log(distance * 100);
+        }
+
         for (const landmarks of results.multiFaceLandmarks) {
             drawConnectors(canvasContext, landmarks, FACEMESH_TESSELATION,
                 { color: '#c0c0c070', lineWidth: 1 });
