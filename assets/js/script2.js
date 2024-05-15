@@ -16,18 +16,18 @@ function onResults(results) {
         results.image, 0, 0, canvasElement.width, canvasElement.height);
     if (results.multiHandLandmarks) {
 
-
         if (results && results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
-            const landmarks = results.multiHandLandmarks[0]; // Obtener los landmarks de la primera mano
+            const landmarks = results.multiHandLandmarks[0];
             if (landmarks && landmarks.length >= 8) {
-                const landmark8 = landmarks[8]; // Acceder al landmark número 8 (indice 7)
+                const landmark8 = landmarks[8];
                 const landmark4 = landmarks[4];
                 const posX = landmark8.x * window.innerWidth;
                 const posY = landmark8.y * window.innerHeight;
-
+                const distance = calculateDistance(landmark8.x, landmark8.y, landmark4.x, landmark4.y)
                 gsap.to(pointer, { duration: 0.5, left: posX - 100, top: posY });
 
-                const distance = calculateDistance(landmark8.x, landmark8.y, landmark4.x, landmark4.y)
+                gsap.to(pointer, { duration: 0.5, width: distance * 100 + "%" });
+
                 console.log(distance);
                 console.log("Coordenadas del landmark 8 de la mano derecha:", landmark8);
             } else {
