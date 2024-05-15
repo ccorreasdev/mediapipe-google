@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script defer type="module" src="./assets/js/script.js"></script>
+    <title>Media Pipe</title>
+</head>
+
+<body>
+
+    <nav class="nav__layout">
+        <div class="nav__logo">Media Pipe</div>
+        <ul class="nav__menu">
+            <a class="nav__link" href="#">
+                <li class="nav__item">Face detection</li>
+            </a>
+        </ul>
+    </nav>
+
+    <main class="main__layout">
+
+        <video id="input-video" class="input__video"></video>
+        <canvas id="canvas-video" class="input__canvas"></canvas>
+
+    </main>
+
+
+
+</body>
+
+</html>
