@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script defer type="importmap">
+        {
+            "imports": {
+                "three": "./assets/js/build/three.module.js",
+                "three/addons/": "./assets/js/jsm/"
+            }
+        }
+    </script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script type="module" defer src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.js"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+        crossorigin="anonymous"></script>
+
+    <script defer type="module" src="./assets/js/script3.js"></script>
+    <title>Media Pipe</title>
+</head>
+
+<body>
+
+    <nav class="nav__layout">
+        <div class="nav__logo">Media Pipe</div>
+        <ul class="nav__menu">
+            <a class="nav__link" href="./index.html">
+                <li class="nav__item">Face detection</li>
+            </a>
+            <a class="nav__link" href="./hand-detection.html">
+                <li class="nav__item">Hand detection</li>
+            </a>
+        </ul>
+    </nav>
+    <main class="main__layout">
+        <section id="canvas" class="canvas"></section>
+        <div id="loading-layout" class="loading__layout">
+            <div class="loading__container">
+                <img id="loading" class="loading__img" src="./assets/img/half_heart.png" alt="heart">
+            </div>
+        </div>
+        <div id="pointer" class="pointer">RATÓN</div>
+
+        <video id="input-video" class="input__video"></video>
+        <canvas id="canvas-video" class="input__canvas"></canvas>
+
+    </main>
+
+
+
+</body>
+
+</html>
