@@ -1,4 +1,5 @@
 import FaceDetection from "./FaceDetection.js";
+import HandDetection from "./HandDetection.js";
 import Master from "./class/Master.js";
 import TouchControls from "./class/TouchControls.js";
 import Models from "./class/Model.js";
@@ -13,6 +14,9 @@ import { windowResizeListener } from "./class/WindowResize.js"
 const faceDetection = new FaceDetection();
 faceDetection.initCamera();
 
+
+const handDetection = new HandDetection();
+handDetection.initCamera();
 
 const scaleValue = (value, minInput, maxInput, minOutput, maxOutput) => {
     return minOutput + (maxOutput - minOutput) * ((value - minInput) / (maxInput - minInput));
@@ -147,15 +151,23 @@ const animate = () => {
 
 
 
-        const eyesPos = faceDetection.getEyesPos();
-        console.log(eyesPos.eye1.z);
-        const scaleX = scaleValue(eyesPos.eye1.x * window.innerWidth, 0, window.innerWidth, 3.8 - 0.5, -3.8);
-        const scaleY = scaleValue(eyesPos.eye1.y * window.innerHeight, 0, window.innerHeight, 0.5, -2.5)
+        //FACE DETECTION
+        // const eyesPos = faceDetection.getEyesPos();
+        // console.log(eyesPos.eye1.z);
+        // const scaleX = scaleValue(eyesPos.eye1.x * window.innerWidth, 0, window.innerWidth, 3.8 - 0.5, -3.8);
+        // const scaleY = scaleValue(eyesPos.eye1.y * window.innerHeight, 0, window.innerHeight, 0.5, -2.5)
+        // gsap.to(models.getLoadedModels(0).model.position, { duration: 1, x: scaleX, y: scaleY });
 
-        //models.getLoadedModels(0).model.position.x = scaleX;
-        //models.getLoadedModels(0).model.position.y = scaleY;
 
-        gsap.to(models.getLoadedModels(0).model.position, { duration: 1, x: scaleX, y: scaleY });
+        const handPos = handDetection.getHandPos();
+        const distance = handDetection.getDistance();
+        console.log("POS: " + distance);
+
+        const scaleX = scaleValue(handPos.x * window.innerWidth, 0, window.innerWidth, 3.8, -3.8);
+        const scaleY = scaleValue(handPos.y * window.innerHeight, 0, window.innerHeight, 0.5, -2.5)
+        const scaleZ = scaleValue(distance, 0.0, 0.5, -10, -1);
+        gsap.to(models.getLoadedModels(0).model.position, { duration: 1, x: scaleX, y: scaleY, z: scaleZ });
+
 
         models.getLoadedModels(1).rotation.y += 0.01
 
